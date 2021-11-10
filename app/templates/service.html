@@ -6,73 +6,61 @@
     <link href="{{url_for('static',filename='css/stylesheet.css')}}" rel=stylesheet>
 </head>
 <body>
-<!-- Top navigation -->
-<div class="topnav" id="topnav">
-    <img src="{{url_for('static',filename='assets/SensitLogo.png')}}">
-    <a href="/logout">Logout</a>
-    <a href="/service">Service</a>
-    <a href="/manufacturing">Manufacturing</a>
-</div>
-<!-- Service Package form -->
-<div class="service">
-    <form action="/service" id="service" method="post">
-        <h2>Service Package</h2>
-        <label>Instrument Name: </label>
-        <select id="instrument" name="instrument" required>
-            <option disabled selected value>--Please choose an Instrument--</option>
-            <option> Sensit Gold G2 TC</option>
-            <option> Sensit P100</option>
-            <option> Sensit P400</option>
-            <option> Sensit CO</option>
-            <option> Trak-It IIIa TC</option>
-        </select> <br><br>
-        <label>Enter Serial Number: </label><input id="serial number" name="serial number" required
-                                                   type="number"/><br><br>
-        <button type="submit">Enter</button>
-    </form>
-</div>
-<div id="table">
-    <table border="1" class="table">
-        <thead>
-        <tr>
-            <th>Instrument Name</th>
-            <th>Serial Number</th>
-            <th>Customer Name</th>
-            <th>Date Manufactured</th>
-            <th>Instrument Warranty Years</th>
-            <br/>
-            <th>CO Sensor</th>
-            <th>CO Sensor Warranty</th>
-            <th>Date CO Installed</th>
-            <th>02 Sensor</th>
-            <th>02 Sensor Warranty</th>
-            <th>Date 02 Installed</th>
-            <th>H2S Sensor</th>
-            <th>H2S Sensor Warranty</th>
-            <th>Date H2S Installed</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for row in result %}
-        <tr>
-            <td>{{row[0]}}</td>
-            <td>{{row[1]}}</td>
-            <td>{{row[2]}}</td>
-            <td>{{row[3]}}</td>
-            <td>{{row[4]}}</td>
-            <td>{{row[5]}}</td>
-            <td>{{row[6]}}</td>
-            <td>{{row[7]}}</td>
-            <td>{{row[8]}}</td>
-            <td>{{row[9]}}</td>
-            <td>{{row[10]}}</td>
-            <td>{{row[11]}}</td>
-            <td>{{row[12]}}</td>
-            <td>{{row[13]}}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+    <!-- Top navigation -->
+    <div class="topnav" id="topnav">
+        <img src="{{url_for('static',filename='assets/SensitLogo.png')}}">
+        <a href="/logout">Logout</a>
+        <a href="/service">Service</a>
+        <a href="/manufacturing">Manufacturing</a>
+    </div>
+    <!-- Service Package form -->
+    <div class="service">
+        <form action="/service" id="service" method="post">
+            <h2>Service Package</h2>
+            <label>Instrument Name: </label>
+            <select id="instrument" name="instrument" required>
+                <option disabled selected value>--Please choose an Instrument--</option>
+                <option> Sensit Gold G2 TC</option>
+                <option> Sensit P100 </option>
+                <option> Sensit P400 </option>
+                <option> Sensit CO </option>
+                <option> Trak-It IIIa TC </option>
+            </select> <br><br>
+            <label>Enter Serial Number: </label><input id="serial number" name="serial number" required type="number"/><br><br>
+            <button type="submit">Enter</button>
+        </form>
+    </div>
+    <div id="table">
+            <table border="1" class="table">
+                <thead>
+                    <tr>
+                        <th>Instrument Name</th><th>Serial Number</th><th>Customer Name</th><th>Date Manufactured</th><th>Instrument Warranty Years</th><br/>
+                        <th>CO Sensor</th><th>CO Sensor Warranty</th><th>Date CO Installed</th>
+                        <th>02 Sensor</th><th>02 Sensor Warranty</th><th>Date 02 Installed</th>
+                        <th>H2S Sensor</th><th>H2S Sensor Warranty</th><th>Date H2S Installed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                    <td>{{row[7]}}</td>
+                    <td>{{row[8]}}</td>
+                    <td>{{row[9]}}</td>
+                    <td>{{row[10]}}</td>
+                    <td>{{row[11]}}</td>
+                    <td>{{row[12]}}</td>
+                    <td>{{row[13]}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+    </div>
 </body>
 </html>

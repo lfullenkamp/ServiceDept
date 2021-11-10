@@ -29,3 +29,4 @@ class IndexTest(TestCase):
         print('check_input() Empty Input test -> PASSED' + '\n')
         self.assertFalse(check_input(' '))
         print('check_input() Space Input test -> PASSED' + '\n')
+

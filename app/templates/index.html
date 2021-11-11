@@ -8,7 +8,7 @@
 <body>
     <!-- Top navigation -->
     <div class="topnav" id="topnav">
-        <img src="{{url_for('static',filename='assets/SensitLogo.png')}}"></a>
+        <img src="{{url_for('static',filename='assets/SensitLogo.png')}}">
         <a href="/logout">Logout</a>
         <a href="/service">Service</a>
         <a href="/manufacturing">Manufacturing</a>
@@ -83,6 +83,17 @@
                 <option> 5 </option>
             </select>
             <label>Date Sensor Installed: </label><input id="h2s date" name="h2s date" required type="date"/><br><br><br>
+            <label>H2S Sensor Number: </label><input id="h2n" name="h2n" pattern="[0-9]{6}" required type="text"/>
+            <label>H2S Sensor Warranty: </label>
+            <select id="h2n warranty" name="h2n warranty" required/>
+                <option disabled selected value>--Num of Years--</option>
+                <option> 1 </option>
+                <option> 2 </option>
+                <option> 3 </option>
+                <option> 4 </option>
+                <option> 5 </option>
+            </select>
+            <label>Date Sensor Installed: </label><input id="h2n date" name="h2n date" required type="date"/><br><br><br>
             <button type="submit">Submit</button>
         </form>
     </div>

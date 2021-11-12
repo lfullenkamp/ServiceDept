@@ -46,13 +46,33 @@ def manufacturing():
         # Inserts every user entry into the database
         cursor.execute('INSERT INTO service.service (`instrument`, `serial number`, `customer name`,`date`, '
                        '`warranty life`, `co`, `co warranty`, `co date`, `o2`,`o2 warranty`, `o2 date`, `h2s`, '
-                       '`h2s warranty`, `h2s date`, `h2s`, `h2s warranty`, `h2s date`) '
+                       '`h2s warranty`, `h2s date`, `h2n`, `h2n warranty`, `h2n date`) '
                        'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
                        (instrument, serial_number, customer_name, date, warranty_life, co, co_warranty, co_date, o2,
                         o2_warranty, o2_date, h2s, h2s_warranty, h2s_date, h2n, h2n_warranty, h2n_date))
         # Commits user input into database
         db.commit()
     return render_template("index.html")
+
+
+# Service Package
+@app.route('/service', methods=['GET', 'POST'])
+def service():
+    if request.method == "POST":
+        # Create variables for easy access of instrument and serial number
+        instrument = request.form['instrument']
+        serial_number = request.form['serial number']
+        # Initializes database cursor
+        cursor = db.cursor()
+        # Selects instrument and serial number if found in the database
+        cursor.execute('SELECT * FROM service.service WHERE `instrument`=%s AND `serial number`=%s', (instrument,
+                                                                                                      serial_number))
+        # Uses cursor to fetch all the contents
+        result = cursor.fetchall()
+        # Displays the results
+        return render_template("service.html", result=result)
+    else:
+        return render_template('service.html')
 
 
 if __name__ == '__main__':

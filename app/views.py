@@ -19,8 +19,8 @@ def index():
     return render_template('index.html')
 
 
-# Manufacturing Package
-@app.route('/manufacturing', methods=['GET', 'POST'])
+# Sales Package
+@app.route('/sales', methods=['GET', 'POST'])
 def manufacturing():
     if request.method == "POST":
         # Create variables for easy access of all form data entries
@@ -29,27 +29,63 @@ def manufacturing():
         customer_name = request.form['customer name']
         date = request.form['date']
         warranty_life = request.form['warranty life']
+
+        # Creates variable for request form data
         co = request.form['co']
-        co_warranty = request.form['co warranty']
+        # Checks if the length of variable is equal to 0, if so sensor is None
+        if len(co) == 0:
+            co = None
+        # Creates variable for request form data
+        co_warranty = request.form.get('co warranty')
+        # Checks if there is no co_warranty selected, if so warranty is None
+        if not co_warranty:
+            co_warranty = None
+        # Creates variable for request form data
         co_date = request.form['co date']
+        # Checks if the length of variable is equal to 0, if so data is None
+        if len(co_date) == 0:
+            co_date = None
+
         o2 = request.form['o2']
-        o2_warranty = request.form['co warranty']
+        if len(o2) == 0:
+            o2 = None
+        o2_warranty = request.form.get('o2 warranty')
+        if not o2_warranty:
+            o2_warranty = None
         o2_date = request.form['o2 date']
+        if len(o2_date) == 0:
+            o2_date = None
+
         h2s = request.form['h2s']
-        h2s_warranty = request.form['h2s warranty']
+        if len(h2s) == 0:
+            h2s = None
+        h2s_warranty = request.form.get('h2s warranty')
+        if not h2s_warranty:
+            h2s_warranty = None
         h2s_date = request.form['h2s date']
-        h2n = request.form['h2n']
-        h2n_warranty = request.form['h2n warranty']
-        h2n_date = request.form['h2n date']
+        if len(h2s_date) == 0:
+            h2s_date = None
+
+        hcn = request.form['hcn']
+        if len(hcn) == 0:
+            hcn = None
+        hcn_warranty = request.form.get('hcn warranty')
+        if not hcn_warranty:
+            hcn_warranty = None
+        hcn_date = request.form['hcn date']
+        if len(hcn_date) == 0:
+            hcn_date = None
+
         # Initializes database cursor
         cursor = db.cursor()
         # Inserts every user entry into the database
-        cursor.execute('INSERT INTO service.service (`instrument`, `serial number`, `customer name`,`date`, '
-                       '`warranty life`, `co`, `co warranty`, `co date`, `o2`,`o2 warranty`, `o2 date`, `h2s`, '
-                       '`h2s warranty`, `h2s date`, `h2n`, `h2n warranty`, `h2n date`) '
-                       'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
-                       (instrument, serial_number, customer_name, date, warranty_life, co, co_warranty, co_date, o2,
-                        o2_warranty, o2_date, h2s, h2s_warranty, h2s_date, h2n, h2n_warranty, h2n_date))
+        insert_data = 'INSERT INTO service.service (`instrument`, `serial number`, `customer name`,`date`,' \
+                      '`warranty life`, `co`, `co warranty`, `co date`, `o2`,`o2 warranty`, `o2 date`, `h2s`, ' \
+                      '`h2s warranty`, `h2s date`, `hcn`, `hcn warranty`, `hcn date`) ' \
+                      'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+        values = (instrument, serial_number, customer_name, date, warranty_life, co, co_warranty, co_date, o2,
+                  o2_warranty, o2_date, h2s, h2s_warranty, h2s_date, hcn, hcn_warranty, hcn_date)
+        cursor.execute(insert_data, values)
         # Commits user input into database
         db.commit()
     return render_template("index.html")
@@ -65,8 +101,9 @@ def service():
         # Initializes database cursor
         cursor = db.cursor()
         # Selects instrument and serial number if found in the database
-        cursor.execute('SELECT * FROM service.service WHERE `instrument`=%s AND `serial number`=%s', (instrument,
-                                                                                                      serial_number))
+        select_data = 'SELECT * FROM service.service WHERE `instrument`=%s AND `serial number`=%s'
+        values = (instrument, serial_number)
+        cursor.execute(select_data, values)
         # Uses cursor to fetch all the contents
         result = cursor.fetchall()
         # Displays the results

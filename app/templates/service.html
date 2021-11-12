@@ -10,13 +10,13 @@
     <div class="topnav" id="topnav">
         <img src="{{url_for('static',filename='assets/SensitLogo.png')}}">
         <a href="/service">Service</a>
-        <a href="/manufacturing">Manufacturing</a>
+        <a href="/sales">Sales</a>
     </div>
     <!-- Service Package form -->
     <div class="service">
         <form action="/service" id="service" method="post">
             <h2>Service Package</h2>
-            <label>Instrument Name: </label>
+            <label><span style="color:red">*</span> Enter Instrument Name: </label>
             <select id="instrument" name="instrument" required>
                 <option disabled selected value>--Please choose an Instrument--</option>
                 <option> Sensit Gold G2 TC</option>
@@ -25,23 +25,24 @@
                 <option> Sensit CO </option>
                 <option> Trak-It IIIa TC </option>
             </select> <br><br>
-            <label>Enter Serial Number: </label><input id="serial number" name="serial number" required type="number"/><br><br>
+            <label><span style="color:red">*</span> Enter Serial Number: </label><input id="serial number" name="serial number" required type="number"/><br><br>
             <button type="submit">Enter</button>
         </form>
     </div>
     <div id="table">
-            <table border="1" class="table">
-                <thead>
-                    <tr>
-                        <th>Instrument Name</th><th>Serial Number</th><th>Customer Name</th><th>Date Manufactured</th><th>Instrument Warranty Years</th><br/>
-                        <th>CO Sensor</th><th>CO Sensor Warranty</th><th>Date CO Installed</th>
-                        <th>02 Sensor</th><th>02 Sensor Warranty</th><th>Date 02 Installed</th>
-                        <th>H2S Sensor</th><th>H2S Sensor Warranty</th><th>Date H2S Installed</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in result %}
-                    <tr>
+        <table border="1" class="table">
+            <thead>
+                <tr>
+                    <th>Instrument Name</th><th>Serial Number</th><th>Customer Name</th><th>Date Sold</th><th>Instrument Warranty Years</th><br/>
+                    <th>CO Sensor # </th><th>CO Sensor Warranty</th><th>Date CO Installed</th>
+                    <th>O2 Sensor # </th><th>O2 Sensor Warranty</th><th>Date O2 Installed</th>
+                    <th>H2S Sensor # </th><th>H2S Sensor Warranty</th><th>Date H2S Installed</th>
+                    <th>HCN Sensor # </th><th>HCN Sensor Warranty</th><th>Date HCN Installed</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in result %}
+                <tr>
                     <td>{{row[0]}}</td>
                     <td>{{row[1]}}</td>
                     <td>{{row[2]}}</td>
@@ -56,10 +57,13 @@
                     <td>{{row[11]}}</td>
                     <td>{{row[12]}}</td>
                     <td>{{row[13]}}</td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-            </table>
+                    <td>{{row[14]}}</td>
+                    <td>{{row[15]}}</td>
+                    <td>{{row[16]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

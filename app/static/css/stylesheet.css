@@ -37,6 +37,11 @@ html, style {
   height: 55px;
 }
 
+.required::before {
+  content: '*';
+  color: red;
+}
+
 form {
   font-size: 16px;
 }
@@ -72,7 +77,7 @@ form {
   transition: 0.3s;
   max-width: 80%;
   min-height: 150px;
-  margin-top: 150px;
+  margin-top: 100px;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
@@ -110,6 +115,3 @@ td:nth-child(even) {
 #table td:hover {
   background-color: #bfbfbf;
 }
-
-
-

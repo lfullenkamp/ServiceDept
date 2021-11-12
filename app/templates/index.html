@@ -10,13 +10,13 @@
     <div class="topnav" id="topnav">
         <img src="{{url_for('static',filename='assets/SensitLogo.png')}}">
         <a href="/service">Service</a>
-        <a href="/manufacturing">Manufacturing</a>
+        <a href="/sales">Sales</a>
     </div>
-    <!-- Manufacturing Package form -->
+    <!-- Sales Package form -->
     <div class="main">
-    <form action="/manufacturing" id="manufacturing" method="post">
-            <h2>Manufacturing Package </h2>
-            <label>Instrument Name: </label>
+    <form action="/sales" id="sales" method="post">
+            <h2>Sales Warranty Input </h2>
+            <label><span style="color:red">*</span> Instrument Name: </label>
             <select id="instrument" name="instrument" required>
                 <option disabled selected value>--Please choose an Instrument--</option>
                 <option> Sensit Gold G2 TC</option>
@@ -25,9 +25,9 @@
                 <option> Sensit CO </option>
                 <option> Trak-It IIIa TC </option>
             </select>
-            <label>Serial Number: </label><input id="serial number" name="serial number" pattern="[0-9]{8}"
+            <label><span style="color:red">*</span> Serial Number: </label><input id="serial number" name="serial number" pattern="[0-9]{8}"
                                                  required type="text"/>
-            <label>Customer Name: </label>
+            <label><span style="color:red">*</span> Customer Name: </label>
             <select id="customer name" name="customer name" required/>
                 <option disabled selected value>--Please choose a Customer--</option>
                 <option> NIPSCO </option>
@@ -39,19 +39,19 @@
                 <option> Alliant Energy </option>
                 <option> Dominion Energy </option>
             </select> <br><br><br>
-            <label>Date Manufactured: </label><input id="date" name="date" required type="date"/>
-            <label>Instrument Warranty:</label>
+            <label><span style="color:red">*</span> Date Sold: </label><input id="date" name="date" required type="date"/>
+            <label><span style="color:red">*</span> Instrument Warranty:</label>
             <select id="warranty life" name="warranty life" required/>
-                <option disabled selected value>--Num of Years--</option>
+                <option disabled selected value >--Num of Years--</option>
                 <option> 1 </option>
                 <option> 2 </option>
                 <option> 3 </option>
                 <option> 4 </option>
                 <option> 5 </option>
             </select> <br><br><br>
-            <label>CO Sensor Number: </label><input id="co" name="co" pattern="[0-9]{6}" required type="text"/>
+            <label>CO Sensor Number: </label><input id="co" name="co" pattern="[0-9]{6}" type="text"/>
             <label>CO Sensor Warranty: </label>
-                <select id="co warranty" name="co warranty" required/>
+                <select id="co warranty" name="co warranty"/>
                 <option disabled selected value>--Num of Years--</option>
                 <option> 1 </option>
                 <option> 2 </option>
@@ -59,10 +59,10 @@
                 <option> 4 </option>
                 <option> 5 </option>
             </select>
-            <label>Date Sensor Installed: </label><input id="co date" name="co date" required type="date"/><br><br><br>
-            <label>O2 Sensor Number: </label><input id="o2" name="o2" pattern="[0-9]{6}" required type="text"/>
-            <label>02 Sensor Warranty: </label>
-            <select id="o2 warranty" name="o2 warranty" required/>
+            <label>Date Sensor Installed: </label><input id="co date" name="co date" type="date"/><br><br><br>
+            <label>O2 Sensor Number: </label><input id="o2" name="o2" pattern="[0-9]{6}" type="text"/>
+            <label>O2 Sensor Warranty: </label>
+            <select id="o2 warranty" name="o2 warranty"/>
                 <option disabled selected value>--Num of Years--</option>
                 <option> 1 </option>
                 <option> 2 </option>
@@ -70,10 +70,10 @@
                 <option> 4 </option>
                 <option> 5 </option>
             </select>
-            <label>Date Sensor Installed: </label><input id="o2 date" name="o2 date" required type="date"/><br><br><br>
-            <label>H2S Sensor Number: </label><input id="h2s" name="h2s" pattern="[0-9]{6}" required type="text"/>
+            <label>Date Sensor Installed: </label><input id="o2 date" name="o2 date" type="date"/><br><br><br>
+            <label>H2S Sensor Number: </label><input id="h2s" name="h2s" pattern="[0-9]{6}" type="text"/>
             <label>H2S Sensor Warranty: </label>
-            <select id="h2s warranty" name="h2s warranty" required/>
+            <select id="h2s warranty" name="h2s warranty"/>
                 <option disabled selected value>--Num of Years--</option>
                 <option> 1 </option>
                 <option> 2 </option>
@@ -81,10 +81,10 @@
                 <option> 4 </option>
                 <option> 5 </option>
             </select>
-            <label>Date Sensor Installed: </label><input id="h2s date" name="h2s date" required type="date"/><br><br><br>
-            <label>H2S Sensor Number: </label><input id="h2n" name="h2n" pattern="[0-9]{6}" required type="text"/>
-            <label>H2S Sensor Warranty: </label>
-            <select id="h2n warranty" name="h2n warranty" required/>
+            <label>Date Sensor Installed: </label><input id="h2s date" name="h2s date" type="date"/><br><br><br>
+            <label>HCN Sensor Number: </label><input id="hcn" name="hcn" pattern="[0-9]{6}" type="text"/>
+            <label>HCN Sensor Warranty: </label>
+            <select id="hcn warranty" name="hcn warranty"/>
                 <option disabled selected value>--Num of Years--</option>
                 <option> 1 </option>
                 <option> 2 </option>
@@ -92,7 +92,7 @@
                 <option> 4 </option>
                 <option> 5 </option>
             </select>
-            <label>Date Sensor Installed: </label><input id="h2n date" name="h2n date" required type="date"/><br><br><br>
+            <label>Date Sensor Installed: </label><input id="hcn date" name="hcn date" type="date"/><br><br><br>
             <button type="submit">Submit</button>
         </form>
     </div>
